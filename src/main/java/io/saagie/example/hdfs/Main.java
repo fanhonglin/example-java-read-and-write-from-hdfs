@@ -18,6 +18,8 @@ public class Main {
    public static void main(String[] args) throws Exception {
       //HDFS URI
 
+//      args[0] = "hdfs://10.40.7.74:8020";
+
       if (args.length<1) {
          logger.severe("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
          System.err.println("1 arg is required :\n\t- hdfsmasteruri (8020 port) ex: hdfs://namenodeserver:8020");
@@ -36,11 +38,12 @@ public class Main {
       // Because of Maven
       conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
       conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
+      conf.set("dfs.client.use.datanode.hostname", "true");
       // Set HADOOP user
       System.setProperty("HADOOP_USER_NAME", "hdfs");
       System.setProperty("hadoop.home.dir", "/");
       //Get the filesystem - HDFS
-      FileSystem fs = FileSystem.get(URI.create(hdfsuri), conf);
+      FileSystem fs = FileSystem.get(URI.create(hdfsuri), conf,"hdfs");
 
       //==== Create folder if not exists
       Path workingDir=fs.getWorkingDirectory();
