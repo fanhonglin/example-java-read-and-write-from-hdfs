@@ -22,7 +22,7 @@ public class MainKerberos {
         // 用户
         String kerUser = "hdfs";
 
-        String krb5Path = "/data/krb5.conf";
+//        String krb5Path = "/data/krb5.conf";
         String keyTabPath = "/data/hdfs.keytab";
 
         // hdfs url
@@ -47,7 +47,7 @@ public class MainKerberos {
         System.setProperty("HADOOP_USER_NAME", kerUser);
         System.setProperty("hadoop.home.dir", "/");
         // krb5.conf
-        System.setProperty("java.security.krb5.conf", krb5Path);
+//        System.setProperty("java.security.krb5.conf", krb5Path);
 
         try {
             UserGroupInformation.setConfiguration(conf);
