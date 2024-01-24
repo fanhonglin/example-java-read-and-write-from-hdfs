@@ -20,16 +20,16 @@ public class MainKerberos {
     public static void main(String[] args) throws Exception {
 
         // 用户
-        String kerUser = "hdfs";
+        String kerUser = "aifwts";
 
 //        String krb5Path = "/data/krb5.conf";
         String keyTabPath = "/data/hdfs.keytab";
 
         // hdfs url
-        String hdfsUrl = "hdfs://10.40.7.110:8020";
+        String hdfsUrl = "hdfs://134.108.46.11:8020";
 
         // hdfs path
-        String path = "/user/hdfs/example/hdfs/";
+        String path = "/user/aifwts";
 
         String fileName = "hello.csv";
         String fileContent = "hello;world";
@@ -40,6 +40,7 @@ public class MainKerberos {
         conf.set("fs.defaultFS", hdfsUrl);
         conf.set("fs.hdfs.impl", org.apache.hadoop.hdfs.DistributedFileSystem.class.getName());
         conf.set("fs.file.impl", org.apache.hadoop.fs.LocalFileSystem.class.getName());
+
         // kerberos
         conf.set("hadoop.security.authentication", "Kerberos");
 
